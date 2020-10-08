@@ -55,20 +55,13 @@ with smart_run(session):
         peak_follows_daily=None,
         peak_unfollows_hourly=35,
         peak_unfollows_daily=402,
-        peak_server_calls_hourly=random.randint(475, 525),
-        peak_server_calls_daily=None
-    )
-
-    session.set_user_interact(amount=3, randomize=False, percentage=100, media='Photo')
-    session.set_do_comment(enabled=True, percentage=5)
-    session.set_comments(
-        comments,
-        media='Photo'
+        peak_server_calls_hourly=random.randint(150, 200),
+        peak_server_calls_daily=4200
     )
 
     session.follow_user_followers(
         account.get_accounts_to_follow(),
         amount=500,
-        randomize=False,
+        randomize=True,
         interact=True
     )
