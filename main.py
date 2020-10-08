@@ -59,9 +59,13 @@ with smart_run(session):
         peak_server_calls_daily=4200
     )
 
-    session.follow_user_followers(
-        account.get_accounts_to_follow(),
-        amount=500,
-        randomize=True,
-        interact=True
-    )
+    if account.get_follow().get_enable():
+        session.follow_user_followers(
+            account.get_follow().get_usernames(),
+            amount=account.get_follow().get_amount(),
+            randomize=account.get_follow().get_randomize(),
+            interact=account.get_follow().get_interact(),
+            sleep_delay=account.get_follow().get_sleep_delay()
+        )
+    else:
+        print('[INFO]: follow feature is not enable.')
