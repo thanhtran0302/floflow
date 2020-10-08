@@ -27,11 +27,23 @@ Example:
 {
   "account_1": {
     "username": "account_1",
-    "password": "your_password"
+    "password": "your_password",
+    "follow": {
+      "enable": true,
+      "usernames": ["username"],
+      "amount": 230
+    }
   },
   "account_2": {
     "username": "account_2",
-    "password": "your_password"
+    "password": "your_password",
+    "follow": {
+      "enable": true,
+      "usernames": ["username"],
+      "amount": 230,
+      "sleep_delay": 500,
+      "randomize": false
+    }
   }
 }
 ```
