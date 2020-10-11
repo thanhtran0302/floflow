@@ -2,6 +2,7 @@
 
 - [follow](#follow)
   - [by_tags](#by_tags)
+  - [by_locations](#by_locations)
 
 ## follow
 
@@ -27,3 +28,12 @@
 | skip_top_posts              | bool      | Will ignore the 9 first posts for each hashtags                                                                                              |
 | use_smart_hashtags          | bool      | Smart hashtags feature                                                                                                                       |
 | use_smart_location_hashtags | bool      | Smart location hashtags feature                                                                                                              |
+
+### by_locations
+
+| Option         | Type      | Description                                                                                                                                  |
+| -------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| locations      | list[str] | list of locations that you want to follow people                                                                                             |
+| amount         | int       | is the number of followers that you want to follow for each user names.                                                                      |
+| media          | str       | Follow Photo or Video media. Possible values are `Photo` and `Video`. If media is not deinfed in config, the bot will follow both by default |
+| skip_top_posts | bool      | Will ignore the 9 first posts for each hashtags                                                                                              |
