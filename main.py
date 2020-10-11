@@ -11,7 +11,8 @@ import sys
 
 if len(sys.argv) <= 1:
     sys.exit(
-        '[ERROR]: Please provide the instagram account that you want to use (match with accounts.json)')
+        '[ERROR]: Please provide the instagram account that you want to use (match with accounts.json)'
+    )
 
 account: Account = None
 config: object = {}

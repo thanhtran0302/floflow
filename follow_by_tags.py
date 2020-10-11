@@ -37,11 +37,11 @@ class FollowByTags:
 
         if key_not_exists(TAGS, config):
             sys.exit('[ERROR]: tags not found.')
-        print('[INFO]: Follow by hashtags -> ' + str(self.__tags))
         self.__session = session
         self.__follow_by_tags()
 
     def __follow_by_tags(self):
+        print('[INFO]: Follow by hashtags -> ' + str(self.__tags))
         self.__session.follow_by_tags(
             tags=self.__tags,
             amount=self.__amount,
