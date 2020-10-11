@@ -5,9 +5,11 @@
 - Python 3 is used for this project.
 - You should have firefox on your machine to launch this script
 
-This bot can only follow accounts for now. If you guys want more feature. Please, feel free to contribute, or make a request :)
+This bot can only follow accounts for now. If you guys want more feature. Please, feel free to contribute, or open issues :)
 
-[Documentation](./DOCUMENTATION.md)
+## Documentation
+
+[See our documentation here](./DOCUMENTATION.md)
 
 ## How to start
 
@@ -26,7 +28,7 @@ Once your virtual environment is set up. Install dependencies:
  $> pip3 install -r requirements.txt
 ```
 
-## Add accounts file.
+## Add `accounts.json` file.
 
 Create a new file called `accounts.json`. Inside of this json, each key is an account information.
 

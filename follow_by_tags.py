@@ -48,27 +48,3 @@ class FollowByTags:
             media=self.__media,
             interact=self.__interact
         )
-
-    # def get_tags(self) -> List[str]:
-    #     return self.__tags
-
-    # def get_amount(self) -> int:
-    #     return self.__amount
-
-    # def get_skip_top_posts(self) -> bool:
-    #     return self.__skip_top_posts
-
-    # def get_randomize(self) -> bool:
-    #     return self.__randomize
-
-    # def get_interact(self) -> bool:
-    #     return self.__interact
-
-    # def get_media(self) -> str:
-    #     return self.__media
-
-    # def get_use_smart_hashtags(self) -> bool:
-    #     return self.__use_smart_hashtags
-
-    # def get_use_smart_location_hashtags(self) -> bool:
-    #     return self.__use_smart_location_hashtags

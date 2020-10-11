@@ -1,6 +1,7 @@
 # Documentations
 
 - [follow](#follow)
+  - [by_tags](#by_tags)
 
 ## follow
 
@@ -12,3 +13,17 @@
 | randomize   | boolean   | If is set to True, the bot will pick the `amount` of persons to follow randomly          |
 | interact    | boolean   | Should to interact with the following account or not (like, comment)                     |
 | sleep_delay | int       | Sleep delay before following the next account.                                           |
+| by_tags     | object    | See [follow by tags](#by_tags)                                                           |
+
+### by_tags
+
+| Option                      | Type      | Description                                                                                                                                  |
+| --------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| tags                        | list[str] | list of tags that you want to follow                                                                                                         |
+| amount                      | int       | the number of users that you want to follow by tags                                                                                          |
+| randomize                   | boolean   | If is set to True, the bot will pick the `amount` of persons to follow randomly                                                              |
+| interact                    | boolean   | Should to interact with the following account or not (like, comment)                                                                         |
+| media                       | str       | Follow Photo or Video media. Possible values are `Photo` and `Video`. If media is not deinfed in config, the bot will follow both by default |
+| skip_top_posts              | bool      | Will ignore the 9 first posts for each hashtags                                                                                              |
+| use_smart_hashtags          | bool      | Smart hashtags feature                                                                                                                       |
+| use_smart_location_hashtags | bool      | Smart location hashtags feature                                                                                                              |
