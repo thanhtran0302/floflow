@@ -1,57 +1,58 @@
-from typing import List
-from utils import key_exists
-from constants import ENABLE, USERNAMES, AMOUNT, RANDOMIZE, INTERACT, SLEEP_DELAY
 import sys
+from constants import ENABLE, USERNAMES, AMOUNT, RANDOMIZE, INTERACT, \
+    SLEEP_DELAY, FOLLOW, BY_TAGS
+from typing import List
+from utils import key_exists, key_not_exists
+from follow_by_tags import FollowByTags
 
 
 class Follow:
-    __enable: bool = True
+    __enable: bool = False
     __usernames: List[str] = []
     __amount: int = 250
     __randomize: bool = True
     __interact: bool = False
     __sleep_delay: int = 600
+    __session = None
+    __by_tags: FollowByTags = None
 
-    def __init__(self, follow_config):
-        if follow_config:
-            if key_exists(ENABLE, follow_config):
-                self.__set_enable(follow_config[ENABLE])
+    def __init__(self, config: object, session):
+        if key_exists(FOLLOW, config):
+            follow = config[FOLLOW]
+            if key_exists(ENABLE, follow):
+                self.__set_enable(follow[ENABLE])
 
-            if key_exists(USERNAMES, follow_config):
-                self.__set_usernames(follow_config[USERNAMES])
+            if key_exists(USERNAMES, follow):
+                self.__set_usernames(follow[USERNAMES])
 
-            if key_exists(AMOUNT, follow_config):
-                self.__set_amount(follow_config[AMOUNT])
+            if key_exists(AMOUNT, follow):
+                self.__set_amount(follow[AMOUNT])
 
-            if key_exists(RANDOMIZE, follow_config):
-                self.__set_randomize(follow_config[RANDOMIZE])
+            if key_exists(RANDOMIZE, follow):
+                self.__set_randomize(follow[RANDOMIZE])
 
-            if key_exists(INTERACT, follow_config):
-                self.__set_interact(follow_config[INTERACT])
+            if key_exists(INTERACT, follow):
+                self.__set_interact(follow[INTERACT])
 
-            if key_exists(SLEEP_DELAY, follow_config):
-                self.__set_sleep_delay(follow_config[SLEEP_DELAY])
+            if key_exists(SLEEP_DELAY, follow):
+                self.__set_sleep_delay(follow[SLEEP_DELAY])
 
-            if self.__enable and len(self.__usernames) == 0:
-                sys.exit('[ERROR]: Please provide usernames to follow')
+        self.__session = session
+        if key_not_exists(BY_TAGS, config[FOLLOW]):
+            print('[INFO]: Follow with usernames...')
+            self.__follow()
+        elif key_not_exists(USERNAMES, config[FOLLOW]):
+            FollowByTags(follow[BY_TAGS], session)
 
-    def get_enable(self) -> bool:
-        return self.__enable
-
-    def get_usernames(self) -> List[str]:
-        return self.__usernames
-
-    def get_amount(self) -> int:
-        return self.__amount
-
-    def get_randomize(self) -> bool:
-        return self.__randomize
-
-    def get_interact(self) -> bool:
-        return self.__interact
-
-    def get_sleep_delay(self) -> int:
-        return self.__sleep_delay
+    def __follow(self) -> None:
+        if self.__enable:
+            self.__session.follow_user_followers(
+                usernames=self.__usernames,
+                amount=self.__amount,
+                randomize=self.__randomize,
+                interact=self.__interact,
+                sleep_delay=self.__sleep_delay
+            )
 
     def __set_enable(self, enable: bool):
         if type(enable) is not bool:
