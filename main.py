@@ -5,14 +5,6 @@ import random
 import json
 import sys
 
-comments = [
-    'Nice shot! @{}',
-    'I love your profile! @{}',
-    '@{} Love it!',
-    '@{} :heart::heart:',
-    '@{}:revolving_hearts::revolving_hearts:',
-    '@{}:fire::fire::fire:'
-]
 
 if len(sys.argv) <= 1:
     sys.exit(
