@@ -1,5 +1,5 @@
 from typing import List
-from utils import key_checker
+from utils import key_not_exists, key_exists
 from follow import Follow
 
 import sys
@@ -11,15 +11,15 @@ class Account:
     __follow: Follow = None
 
     def __init__(self, config):
-        if key_checker('username', config):
+        if key_not_exists('username', config):
             sys.exit('[ERROR]: No username provided')
-        elif key_checker('password', config):
+        elif key_not_exists('password', config):
             sys.exit('[ERROR]: No password provided')
 
         self.__username = config['username']
         self.__password = config['password']
 
-        if not key_checker('follow', config):
+        if key_exists('follow', config):
             self.__follow = Follow(config['follow'])
 
     def get_username(self):
