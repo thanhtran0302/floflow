@@ -1,9 +1,10 @@
 import sys
 from constants import ENABLE, USERNAMES, AMOUNT, RANDOMIZE, INTERACT, \
-    SLEEP_DELAY, FOLLOW, BY_TAGS
+    SLEEP_DELAY, FOLLOW, BY_TAGS, BY_LOCATIONS
 from typing import List
 from utils import key_exists, key_not_exists
 from follow_by_tags import FollowByTags
+from follow_by_locations import FollowByLocations
 
 
 class Follow:
@@ -15,6 +16,7 @@ class Follow:
     __sleep_delay: int = 600
     __session = None
     __by_tags: FollowByTags = None
+    __by_locations: FollowByLocations = None
 
     def __init__(self, config: object, session):
         if key_exists(FOLLOW, config):
@@ -38,14 +40,15 @@ class Follow:
                 self.__set_sleep_delay(follow[SLEEP_DELAY])
 
         self.__session = session
-        if key_not_exists(BY_TAGS, config[FOLLOW]):
-            print('[INFO]: Follow with usernames...')
-            self.__follow()
-        elif key_not_exists(USERNAMES, config[FOLLOW]):
+        self.__follow()
+        if key_exists(BY_TAGS, follow):
             FollowByTags(follow[BY_TAGS], session)
+        if key_exists(BY_LOCATIONS, follow):
+            FollowByLocations(follow[BY_LOCATIONS], session)
 
     def __follow(self) -> None:
         if self.__enable:
+            print('[INFO]: Follow with usernames...')
             self.__session.follow_user_followers(
                 usernames=self.__usernames,
                 amount=self.__amount,
