@@ -1,6 +1,7 @@
 from typing import List
 from utils import key_not_exists, key_exists
 from follow import Follow
+from constants import USERNAME, PASSWORD, FOLLOW
 
 import sys
 
@@ -11,16 +12,16 @@ class Account:
     __follow: Follow = None
 
     def __init__(self, config):
-        if key_not_exists('username', config):
+        if key_not_exists(USERNAME, config):
             sys.exit('[ERROR]: No username provided')
-        elif key_not_exists('password', config):
+        elif key_not_exists(PASSWORD, config):
             sys.exit('[ERROR]: No password provided')
 
-        self.__username = config['username']
-        self.__password = config['password']
+        self.__username = config[USERNAME]
+        self.__password = config[PASSWORD]
 
-        if key_exists('follow', config):
-            self.__follow = Follow(config['follow'])
+        if key_exists(FOLLOW, config):
+            self.__follow = Follow(config[FOLLOW])
 
     def get_username(self):
         return self.__username

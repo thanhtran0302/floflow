@@ -1,5 +1,6 @@
 from typing import List
 from utils import key_exists
+from constants import ENABLE, USERNAMES, AMOUNT, RANDOMIZE, INTERACT, SLEEP_DELAY
 import sys
 
 
@@ -13,23 +14,23 @@ class Follow:
 
     def __init__(self, follow_config):
         if follow_config:
-            if key_exists('enable', follow_config):
-                self.__set_enable(follow_config['enable'])
+            if key_exists(ENABLE, follow_config):
+                self.__set_enable(follow_config[ENABLE])
 
-            if key_exists('usernames', follow_config):
-                self.__set_usernames(follow_config['usernames'])
+            if key_exists(USERNAMES, follow_config):
+                self.__set_usernames(follow_config[USERNAMES])
 
-            if key_exists('amount', follow_config):
-                self.__set_amount(follow_config['amount'])
+            if key_exists(AMOUNT, follow_config):
+                self.__set_amount(follow_config[AMOUNT])
 
-            if key_exists('randomize', follow_config):
-                self.__set_randomize(follow_config['randomize'])
+            if key_exists(RANDOMIZE, follow_config):
+                self.__set_randomize(follow_config[RANDOMIZE])
 
-            if key_exists('interact', follow_config):
-                self.__set_interact(follow_config['interact'])
+            if key_exists(INTERACT, follow_config):
+                self.__set_interact(follow_config[INTERACT])
 
-            if key_exists('sleep_delay', follow_config):
-                self.__set_sleep_delay(follow_config['sleep_delay'])
+            if key_exists(SLEEP_DELAY, follow_config):
+                self.__set_sleep_delay(follow_config[SLEEP_DELAY])
 
             if self.__enable and len(self.__usernames) == 0:
                 sys.exit('[ERROR]: Please provide usernames to follow')
