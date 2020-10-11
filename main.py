@@ -1,6 +1,9 @@
 from instapy import InstaPy
 from instapy import smart_run
 from account import Account
+from follow import Follow
+from utils import key_not_exists
+from constants import USERNAME, PASSWORD
 import random
 import json
 import sys
@@ -10,16 +13,16 @@ if len(sys.argv) <= 1:
     sys.exit(
         '[ERROR]: Please provide the instagram account that you want to use (match with accounts.json)')
 
-account = None
-try:
-    with open('accounts.json', 'r') as data:
-        formatted_data = json.load(data)
+account: Account = None
+config: object = {}
+instaname = sys.argv[1]
 
-        if sys.argv[1] not in formatted_data:
-            sys.exit('[ERROR]: given account is not exists.')
-        account = Account(formatted_data[sys.argv[1]])
-except:
-    sys.exit('[ERROR]: accounts.json file not found.')
+with open('accounts.json', 'r') as data:
+    config = json.load(data)
+
+    if key_not_exists(instaname, config):
+        sys.exit('[ERROR]: ' + instaname + ' is not exists.')
+    account = Account(config[instaname])
 
 session = InstaPy(
     username=account.get_username(),
@@ -55,14 +58,4 @@ with smart_run(session):
         peak_server_calls_daily=4200
     )
 
-    follow = account.get_follow()
-    if follow != None and follow.get_enable():
-        session.follow_user_followers(
-            usernames=follow.get_usernames(),
-            amount=follow.get_amount(),
-            randomize=follow.get_randomize(),
-            interact=follow.get_interact(),
-            sleep_delay=follow.get_sleep_delay()
-        )
-    else:
-        print('[INFO]: follow feature is not enable.')
+    Follow(config[instaname], session)
