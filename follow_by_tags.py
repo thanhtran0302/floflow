@@ -1,5 +1,6 @@
+import sys
 from typing import List
-from utils import key_exists
+from utils import key_exists, key_not_exists
 from constants import TAGS, AMOUNT, SKIP_TOP_POSTS, RANDOMIZE, INTERACT, \
     MEDIA, USE_SMART_HASHTAGS, USE_SMART_LOCATION_HASHTAGS
 
@@ -33,6 +34,9 @@ class FollowByTags:
                 self.__use_smart_hashtags = config[USE_SMART_HASHTAGS]
             if key_exists(USE_SMART_LOCATION_HASHTAGS, config):
                 self.__use_smart_location_hashtags = config[USE_SMART_LOCATION_HASHTAGS]
+
+        if key_not_exists(TAGS, config):
+            sys.exit('[ERROR]: tags not found.')
         print('[INFO]: Follow by hashtags -> ' + str(self.__tags))
         self.__session = session
         self.__follow_by_tags()
