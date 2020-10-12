@@ -40,22 +40,22 @@ class Follow:
                 self.__set_sleep_delay(follow[SLEEP_DELAY])
 
         self.__session = session
-        self.__follow()
-        if key_exists(BY_TAGS, follow):
-            FollowByTags(follow[BY_TAGS], session)
-        if key_exists(BY_LOCATIONS, follow):
-            FollowByLocations(follow[BY_LOCATIONS], session)
+        if self.__enable:
+            self.__follow()
+            if key_exists(BY_TAGS, follow):
+                FollowByTags(follow[BY_TAGS], session)
+            if key_exists(BY_LOCATIONS, follow):
+                FollowByLocations(follow[BY_LOCATIONS], session)
 
     def __follow(self) -> None:
-        if self.__enable:
-            print('[INFO]: Follow with usernames...')
-            self.__session.follow_user_followers(
-                usernames=self.__usernames,
-                amount=self.__amount,
-                randomize=self.__randomize,
-                interact=self.__interact,
-                sleep_delay=self.__sleep_delay
-            )
+        print('[INFO]: Follow with usernames...')
+        self.__session.follow_user_followers(
+            usernames=self.__usernames,
+            amount=self.__amount,
+            randomize=self.__randomize,
+            interact=self.__interact,
+            sleep_delay=self.__sleep_delay
+        )
 
     def __set_enable(self, enable: bool):
         if type(enable) is not bool:
