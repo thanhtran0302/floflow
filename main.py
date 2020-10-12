@@ -2,6 +2,7 @@ from instapy import InstaPy
 from instapy import smart_run
 from account import Account
 from follow import Follow
+from unfollow import Unfollow
 from utils import key_not_exists
 from constants import USERNAME, PASSWORD
 import random
@@ -60,3 +61,4 @@ with smart_run(session):
     )
 
     Follow(config[instaname], session)
+    Unfollow(config[instaname], session)
