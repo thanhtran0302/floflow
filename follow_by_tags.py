@@ -7,8 +7,8 @@ from constants import TAGS, AMOUNT, SKIP_TOP_POSTS, RANDOMIZE, INTERACT, \
 
 class FollowByTags:
     __tags: List[str] = []
-    __amount: int = 15
-    __skip_top_posts: bool = False
+    __amount: int = 0
+    __skip_top_posts: bool = True
     __randomize: bool = True
     __interact: bool = False
     __media: str = None

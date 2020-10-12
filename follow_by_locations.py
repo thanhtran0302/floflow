@@ -5,7 +5,7 @@ from constants import LOCATIONS, AMOUNT, MEDIA, SKIP_TOP_POSTS
 
 class FollowByLocations:
     __locations: List[str] = []
-    __amount: int = 15
+    __amount: int = 0
     __media: str = None
     __skip_top_posts: bool = True
     __session = None
