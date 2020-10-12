@@ -10,7 +10,7 @@ from utils import key_exists
 class Unfollow:
     __white_list: List[str] = []
     __enable: bool = False
-    __amount: int = 10
+    __amount: int = 0
     __custom_list_enabled: bool = False
     __custom_list: List[str] = []
     __custom_list_param: str = ALL
