@@ -59,6 +59,8 @@ Example:
 }
 ```
 
+For more options, please see the [documentation page](./DOCUMENTATION.md)
+
 ## Launch FloFlow
 
 ```bash
