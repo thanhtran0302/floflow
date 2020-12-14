@@ -2,7 +2,7 @@ import sys
 from constants import ENABLE, USERNAMES, AMOUNT, RANDOMIZE, INTERACT, \
     SLEEP_DELAY, FOLLOW, BY_TAGS, BY_LOCATIONS
 from typing import List
-from utils import key_exists, key_not_exists
+from utils import key_exists
 from follow_by_tags import FollowByTags
 from follow_by_locations import FollowByLocations
 
@@ -41,11 +41,12 @@ class Follow:
 
         self.__session = session
         if self.__enable:
-            self.__follow()
             if key_exists(BY_TAGS, follow):
                 FollowByTags(follow[BY_TAGS], session)
-            if key_exists(BY_LOCATIONS, follow):
+            elif key_exists(BY_LOCATIONS, follow):
                 FollowByLocations(follow[BY_LOCATIONS], session)
+            else:
+                self.__follow()
 
     def __follow(self) -> None:
         print('[INFO]: Follow with usernames...')

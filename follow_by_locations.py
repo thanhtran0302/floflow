@@ -19,7 +19,7 @@ class FollowByLocations:
             if key_exists(MEDIA, config):
                 self.__media = config[MEDIA]
             if key_exists(SKIP_TOP_POSTS, config):
-                self.__skip_top_posts = config[SKIP_TOP_POST]
+                self.__skip_top_posts = config[SKIP_TOP_POSTS]
 
         self.__session = session
         self.__follow_by_locations()

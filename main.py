@@ -4,7 +4,6 @@ from account import Account
 from follow import Follow
 from unfollow import Unfollow
 from utils import key_not_exists
-from constants import USERNAME, PASSWORD
 import random
 import json
 import sys
@@ -36,12 +35,7 @@ session = InstaPy(
 
 with smart_run(session):
     session.set_relationship_bounds(
-        enabled=True,
-        delimit_by_numbers=True,
-        max_followers=15000,
-        max_following=1500,
-        min_followers=0,
-        min_following=30
+        enabled=True
     )
 
     session.set_quota_supervisor(
