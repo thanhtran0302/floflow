@@ -4,10 +4,13 @@ from account import Account
 from follow import Follow
 from unfollow import Unfollow
 from like_by_feed import LikeByFeed
+from like_by_users import LikeByUsers
 from utils import key_not_exists
 import random
+import os
 import json
 import sys
+import csv
 
 
 if len(sys.argv) <= 1:
@@ -18,6 +21,15 @@ if len(sys.argv) <= 1:
 account: Account = None
 config: object = {}
 instaname = sys.argv[1]
+user_home = os.getenv('HOME')
+current_user_log_path = user_home + '/InstaPy/logs/' + instaname + '/' + instaname + '_followedPool.csv'
+users = []
+
+with open(current_user_log_path, 'r') as data:
+    csv_reader = csv.reader(data, delimiter='~')
+
+    for row in csv_reader:
+        users.append(row[1].strip())
 
 with open('accounts.json', 'r') as data:
     config = json.load(data)
@@ -56,5 +68,6 @@ with smart_run(session):
     )
 
     Follow(config[instaname], session)
+    LikeByUsers(config[instaname], session, users)
     LikeByFeed(config[instaname], session)
     Unfollow(config[instaname], session)

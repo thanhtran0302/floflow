@@ -5,6 +5,7 @@
   - [by_locations](#by_locations)
 - [unfollow](#unfollow)
 - [like_by_feed](#like_by_feed)
+- [like_by_users](#like_by_users)
 
 ## follow
 
@@ -60,9 +61,21 @@
 | unfollow_after         | int  | Unfollow after X minutes or hours                                                                                |                        | None          |
 
 ## like_by_feed
-| Option         | Type      | Description                                                                                                                                  | Values         | Default value |
-| -------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| amount         | int       | is the number of followers that you want to like in your feed.                                                                               |                | 100           |
-| randomize      | boolean   | If is set to True, the bot will pick the `amount` of posts to like randomly                                                                  | true \| false  | true          |
-| interact       | boolean   | Should to interact with user  account or not (like)                                                                                          | true \| false  | true          |
-| unfollow       | boolean   | Unfollows the author of a post which was considered inappropriate                                                                            | true \| false  | true          |
+
+| Option    | Type    | Description                                                                 | Values        | Default value |
+| --------- | ------- | --------------------------------------------------------------------------- | ------------- | ------------- |
+| amount    | int     | is the number of followers that you want to like in your feed.              |               | 100           |
+| randomize | boolean | If is set to True, the bot will pick the `amount` of posts to like randomly | true \| false | true          |
+| interact  | boolean | Should to interact with user account or not (like)                          | true \| false | true          |
+| unfollow  | boolean | Unfollows the author of a post which was considered inappropriate           | true \| false | true          |
+
+## like_by_users
+
+Floflow pick directly users list from default InstaPy log. You can find the list at `~/InstaPy/logs/[instaName]/[instaName]_followedPool.csv`
+No user list is required to use this option.
+
+| Option    | Type    | Description                                                                 | Values         | Default value |
+| --------- | ------- | --------------------------------------------------------------------------- | -------------- | ------------- |
+| amount    | int     | Is the number of photos that you want to like in user's feed                |                | 15            |
+| randomize | boolean | If is set to True, the bot will pick the `amount` of posts to like randomly | true \| false  | true          |
+| media     | str     | You can choose to like user's Photo or Video or both                        | Photo \| Video | Photo         |
