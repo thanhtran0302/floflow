@@ -4,6 +4,7 @@
   - [by_tags](#by_tags)
   - [by_locations](#by_locations)
 - [unfollow](#unfollow)
+- [like_by_feed](#like_by_feed)
 
 ## follow
 
@@ -57,3 +58,11 @@
 | instapy_followed_param | str  | Same as `custom_list_param`                                                                                      | all \| nonfollowers    | all           |
 | style                  | str  | The style that you wan to unfollow                                                                               | FIFO \| LIFO \| RANDOM | RANDOM        |
 | unfollow_after         | int  | Unfollow after X minutes or hours                                                                                |                        | None          |
+
+## like_by_feed
+| Option         | Type      | Description                                                                                                                                  | Values         | Default value |
+| -------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| amount         | int       | is the number of followers that you want to like in your feed.                                                                               |                | 100           |
+| randomize      | boolean   | If is set to True, the bot will pick the `amount` of posts to like randomly                                                                  | true \| false  | true          |
+| interact       | boolean   | Should to interact with user  account or not (like)                                                                                          | true \| false  | true          |
+| unfollow       | boolean   | Unfollows the author of a post which was considered inappropriate                                                                            | true \| false  | true          |

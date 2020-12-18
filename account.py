@@ -1,5 +1,4 @@
-from typing import List
-from utils import key_not_exists, key_exists
+from utils import key_not_exists
 from constants import USERNAME, PASSWORD
 
 import sys

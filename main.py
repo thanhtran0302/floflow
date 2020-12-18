@@ -3,6 +3,7 @@ from instapy import smart_run
 from account import Account
 from follow import Follow
 from unfollow import Unfollow
+from like_by_feed import LikeByFeed
 from utils import key_not_exists
 import random
 import json
@@ -54,5 +55,6 @@ with smart_run(session):
         peak_server_calls_daily=4200
     )
 
-    Follow(config[instaname], session)
-    Unfollow(config[instaname], session)
+    # Follow(config[instaname], session)
+    LikeByFeed(config[instaname], session)
+    # Unfollow(config[instaname], session)
