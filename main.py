@@ -55,6 +55,6 @@ with smart_run(session):
         peak_server_calls_daily=4200
     )
 
-    # Follow(config[instaname], session)
+    Follow(config[instaname], session)
     LikeByFeed(config[instaname], session)
-    # Unfollow(config[instaname], session)
+    Unfollow(config[instaname], session)
